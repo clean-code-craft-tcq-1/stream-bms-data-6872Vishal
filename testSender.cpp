@@ -4,7 +4,7 @@
 #include "stream_bms.h"
 
 TEST_CASE("infers the breach according to limits") {
-  struct Register sender_buffer_st = {1, 100, 1, 10};
+  struct Register sender_buffer_st = {Start_Tx, 100,BMS_SOC , 10};
   struct Datablock* firstblock = NULL;
   Transmission_Controller(sender_buffer_st, &firstblock);
   REQUIRE(firstblock != NULL);
