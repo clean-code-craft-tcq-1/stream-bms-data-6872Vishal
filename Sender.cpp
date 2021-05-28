@@ -39,7 +39,7 @@ void Transmission_Controller(struct Register RxBuffer_st,struct Datablock** Head
   {
   decrement_to_zero(RxBuffer_st.TimeInterval);
   struct Datablock* new_node = (struct Datablock*) malloc(sizeof(struct Datablock));
-   new_node->BMSData = getdata_from_sensor(RxBuffer_st.DataType);
+   new_node->BMSDataSample = getdata_from_sensor(RxBuffer_st.DataType);
    new_node->next = *Head;
    *Head = new_node;
     ToConsole(new_node->BMSData);
