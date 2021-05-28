@@ -13,7 +13,8 @@ struct Register
 struct Datablock
 {
   unsigned BMSData;
-  unsigned SampleNumber;
+  //unsigned SampleNumber;
+  struct Datablock* next;
 };
 
 struct localstorage
@@ -28,5 +29,5 @@ void decrement_to_zero(unsigned counter);
 
 void Transmission_Controller(struct Register RxBuffer_st);
 
-void ToConsole(struct Datablock );
+void ToConsole(unsigned output);
 
