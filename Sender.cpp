@@ -19,7 +19,7 @@ void ToConsole(unsigned output)
   cout<<output<<"\n";
 }
 //struct Datablock *Head = NULL;
-void Transmission_Controller(struct Register RxBuffer_st, auto &Head)
+void Transmission_Controller(struct Register RxBuffer_st,struct Datablock& Head)
 {
  
   for(int temp=RxBuffer_st.Num_of_Samples;temp>0;temp--)
@@ -28,7 +28,7 @@ void Transmission_Controller(struct Register RxBuffer_st, auto &Head)
   struct Datablock* new_node = (struct Node*) malloc(sizeof(struct Datablock));
    new_node->BMSData = getdata_from_sensor();
    new_node->next = Head;
-   head = new_node;
+   Head = new_node;
     ToConsole(new_node->BMSData);
   }
   
