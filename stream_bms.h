@@ -27,7 +27,7 @@ unsigned getdata_from_sensor();
 
 void decrement_to_zero(unsigned counter);
 
-void Transmission_Controller(struct Register RxBuffer_st,struct Datablock& Head);
+void Transmission_Controller(struct Register RxBuffer_st,struct Datablock** Head);
 
 void ToConsole(unsigned output);
 
