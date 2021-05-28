@@ -18,8 +18,8 @@ void ToConsole(unsigned output)
 {
   cout<<output<<"\n";
 }
-struct Datablock *Head = NULL;
-void Transmission_Controller(struct Register RxBuffer_st)
+//struct Datablock *Head = NULL;
+void Transmission_Controller(struct Register RxBuffer_st, auto &Head)
 {
  
   for(int temp=RxBuffer_st.Num_of_Samples;temp>0;temp--)
