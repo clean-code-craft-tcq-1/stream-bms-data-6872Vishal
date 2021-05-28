@@ -25,7 +25,7 @@ struct Datablock
   struct localstorage *P;
 };*/
 
-unsigned getdata_from_sensor();
+unsigned getdata_from_sensor(enum BMS_Data );
 
 void decrement_to_zero(unsigned counter);
 
