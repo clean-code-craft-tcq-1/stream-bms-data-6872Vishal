@@ -2,26 +2,28 @@
 
 using namespace std;
 
+enum BMS_Data {BMS_SOC,BMS_Temperature,BMS_Data,TotalNumber};
+enum Transmission {Stop_Tx, Start_Tx};
+
 struct Register
 {
-  unsigned TransmissionType;
+  enum Transmission TransmissionType;
   unsigned TimeInterval;
-  unsigned DataType;
+  enum BMS_Data DataType;
   unsigned Num_of_Samples;
 };
 
 struct Datablock
 {
-  unsigned BMSData;
-  //unsigned SampleNumber;
+  unsigned BMSDataSample;
   struct Datablock* next;
 };
 
-struct localstorage
+/*struct localstorage
 {
   struct Datablock Tx_st;
   struct localstorage *P;
-};
+};*/
 
 unsigned getdata_from_sensor();
 
