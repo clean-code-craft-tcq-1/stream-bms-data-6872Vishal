@@ -42,7 +42,7 @@ void Transmission_Controller(struct Register RxBuffer_st,struct Datablock** Head
    new_node->BMSDataSample = getdata_from_sensor(RxBuffer_st.DataType);
    new_node->next = *Head;
    *Head = new_node;
-    ToConsole(new_node->BMSData);
+    ToConsole(new_node->BMSDataSample);
   }
   
 }
