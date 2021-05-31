@@ -4,7 +4,7 @@
 #include "stream_bms.h"
 
 TEST_CASE("Test Case 1 : Working condition") {
-  struct Register sender_buffer_st = {Start_Tx, 100,BMS_SOC , 10};
+  struct Register sender_buffer_st = {Start_Tx, 100,BMS_SOC , BUFFER_SIZE};
   struct Datablock* firstblock = NULL;
   cout<<"*********************Test Case : 1********************\n";
   Transmission_Controller(sender_buffer_st, &firstblock);
@@ -14,7 +14,7 @@ TEST_CASE("Test Case 1 : Working condition") {
 
 TEST_CASE("Test Case 2 : Check no of Data Blocks") {
   int DataBlockCounter = 0;
-  struct Register sender_buffer_st = {Start_Tx, 100,BMS_SOC , 10};
+  struct Register sender_buffer_st = {Start_Tx, 100,BMS_SOC , BUFFER_SIZE};
   struct Datablock* firstblock = NULL;
   cout<<"*********************Test Case : 2********************\n";
   Transmission_Controller(sender_buffer_st, &firstblock);
@@ -38,19 +38,30 @@ cout<<"*********************Test Case : 3********************\n";
   REQUIRE(temp < 10);  
 }
 
-TEST_CASE("Test Case 4 :  FIFO file tranfer check") {
+TEST_CASE("Test Case 4 :  data tranfer check") {
   cout<<"*********************Test Case : 4********************\n";
-  if(mkfifo("myfifo",0777) == -1)
-  { if(errno != EEXIST) {
-    cout<<"could not open fifo \n";
-  } }
-  int fd1 = open("myfifo", O_RDONLY);
-  int y,z = 10;
-  fifofunc(10);
-  if(read(fd1,&y,sizeof(y)) == -1) {
-    cout<< " could not read \n";
+  int DataBlockCounter = 0;
+  struct Register sender_buffer_st = {Start_Tx, 100,BMS_SOC , BUFFER_SIZE};
+  struct Datablock* firstblock = NULL;
+  Transmission_Controller(sender_buffer_st, &firstblock);
+  int fd[2];
+  if(pipe(fd) == -1) { cout<<"pipe failed \n"; }
+  int pid1 = fork();
+  if(pid1 < 0){ cout<<" Fork failed \n";}
+  if(pid1 == 0) {
+    close(fd[0]);
+    write(fd[1], buff_output, sizeof(int)*BUFFER_SIZE);
+    close(fd[1]);
   }
-  close(fd1);
-  REQUIRE(y == z);
+  else{
+    close(fd[1]);
+    read(fd[0], buff_input, sizeof(int)*BUFFER_SIZE);
+    close(fd[0]);
+  }
+  wait(NULL);
+  if(int s=0; s<BUFFER_SIZE; s++){
+  REQUIRE(buff_input[s] == buff_output[s]);
+  }
+  
 }
 
