@@ -4,7 +4,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <errno.h>
-#innclude <fcntl.h>
+#include <fcntl.h>
 
 
 using namespace std;
@@ -35,3 +35,4 @@ void Transmission_Controller(struct Register RxBuffer_st,struct Datablock** Head
 
 void ToConsole(unsigned output);
 
+void fifofunc(unsigned output1);
