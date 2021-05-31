@@ -3,6 +3,9 @@
 #include "test/catch.hpp"
 #include "stream_bms.h"
 
+int buffer_input1[BUFFER_SIZE];
+int buffer_output1[BUFFER_SIZE];
+
 TEST_CASE("Test Case 1 : Working condition") {
   struct Register sender_buffer_st = {Start_Tx, 100,BMS_SOC , BUFFER_SIZE};
   struct Datablock* firstblock = NULL;
