@@ -50,6 +50,7 @@ TEST_CASE("Test Case 4 :  FIFO file tranfer check") {
   if(read(fd1,&y,sizeof(y)) == -1) {
     cout<< " could not read \n";
   }
+  close(fd1);
   REQUIRE(y == z);
 }
 
