@@ -49,17 +49,17 @@ TEST_CASE("Test Case 4 :  data tranfer check") {
   if(pid1 < 0){ cout<<" Fork failed \n";}
   if(pid1 == 0) {
     close(fd[0]);
-    write(fd[1], buff_output, sizeof(int)*BUFFER_SIZE);
+    write(fd[1], buffer_output1, sizeof(int)*BUFFER_SIZE);
     close(fd[1]);
   }
   else{
     close(fd[1]);
-    read(fd[0], buff_input, sizeof(int)*BUFFER_SIZE);
+    read(fd[0], buffer_input1, sizeof(int)*BUFFER_SIZE);
     close(fd[0]);
   }
   wait(NULL);
   for(int s=0; s<BUFFER_SIZE; s++){
-  REQUIRE(buff_input[s] == buff_output[s]);
+  REQUIRE(buffer_input1[s] == buffer_output1[s]);
   }
   
 }
