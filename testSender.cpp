@@ -40,7 +40,6 @@ cout<<"*********************Test Case : 3********************\n";
 
 TEST_CASE("Test Case 4 :  data tranfer check") {
   cout<<"*********************Test Case : 4********************\n";
-  int DataBlockCounter = 0;
   struct Register sender_buffer_st = {Start_Tx, 100,BMS_SOC , BUFFER_SIZE};
   struct Datablock* firstblock = NULL;
   Transmission_Controller(sender_buffer_st, &firstblock);
