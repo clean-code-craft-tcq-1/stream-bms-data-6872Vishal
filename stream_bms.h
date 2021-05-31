@@ -1,4 +1,7 @@
 #include <iostream>
+#include <errno.h>
+#include <unistd.h>
+#include <sys/types.h>
 
 using namespace std;
 
@@ -19,11 +22,6 @@ struct Datablock
   struct Datablock* next;
 };
 
-/*struct localstorage
-{
-  struct Datablock Tx_st;
-  struct localstorage *P;
-};*/
 
 unsigned getdata_from_sensor(enum BMS_Data );
 
