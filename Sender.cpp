@@ -71,24 +71,25 @@ int PipelineSender(void)
   {
     if(dup2(fd[1],STDOUT_FILENO)== -1)
     {
-      perror("Failed to redirect stdout of sender");
+      cout<<"Failed to redirect stdout of sender \n";
     }
     else if((close(fd[0]) == -1) || (close(fd[1]) == -1))
     {
-      perror("Failed to close extra pipe descriptors on Sender");
+      cout<<"Failed to close extra pipe descriptors on Sender \n";
     }
     else
     {
+      
     }
     return 1;
   }
-  if(dup2(fd[0],STDIN_FILENO)== -1)
+    if(dup2(fd[0],STDIN_FILENO)== -1)
     {
-      perror("Failed to redirect stdin of receiver");
+      cout<<"Failed to redirect stdin of receiver \n";
     }
     else if((close(fd[0]) == -1) || (close(fd[1]) == -1))
     {
-      perror("Failed to close extra pipe descriptors on receiver");
+      cout<<"Failed to close extra pipe descriptors on receiver\n";
     }
     else
     {
