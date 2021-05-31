@@ -37,3 +37,19 @@ cout<<"*********************Test Case : 3********************\n";
   temp = getdata_from_sensor(TotalNumber);
   REQUIRE(temp < 10);  
 }
+
+TEST_CASE("Test Case 4 :  FIFO file tranfer check") {
+  cout<<"*********************Test Case : 4********************\n";
+  if(mkfifo("myfifo",0777) == -1)
+  { if(errno != EEXIST) {
+    cout<<"could not open fifo \n";
+  } }
+  int fd1 = open("myfifo", O_RDONLY);
+  int y,z = 10;
+  fifofunc(10);
+  if(read(fd1,&y,sizeof(y)) == -1) {
+    cout<< " could not read \n";
+  }
+  REQUIRE(y == z);
+}
+
