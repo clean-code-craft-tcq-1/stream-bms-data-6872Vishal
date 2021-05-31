@@ -54,7 +54,7 @@ void Transmission_Controller(struct Register RxBuffer_st,struct Datablock** Head
    new_node->next = *Head;
    *Head = new_node;
     //ToConsole(new_node->BMSDataSample);
-    buff_output[temp] = new_node->BMSDataSample;
+    buffer_output1[temp] = new_node->BMSDataSample;
   }
   
 }
