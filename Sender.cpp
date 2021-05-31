@@ -28,9 +28,20 @@ unsigned getdata_from_sensor(enum BMS_Data Sensor)
   }
 }
 
+void fifofunc(unsigned output1)
+{
+    int fd = open("myfifo", O_WRONLY);
+  if(write(fd, &output1,sizeof(output1)) == -1)
+  {
+    cout<<"failed to write\n";
+  }
+  close(fd);
+}
+
 void ToConsole(unsigned output)
 {
   cout<<output<<"\n";
+
 }
 
 void Transmission_Controller(struct Register RxBuffer_st,struct Datablock** Head)
