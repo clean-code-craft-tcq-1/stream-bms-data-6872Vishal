@@ -46,3 +46,41 @@ void Transmission_Controller(struct Register RxBuffer_st,struct Datablock** Head
   }
   
 }
+
+int PipelineSender(void)
+{
+  pid_t childpid;
+  int fd[2];
+  
+  if((pipe(fd) == -1) || ((childpid = fork()) == -1)){
+    perror("Failed to setup pipeline");
+    return 1;
+  }
+  if(childpid == 0)
+  {
+    if(dup2(fd[1],STDOUT_FILENO)== -1)
+    {
+      perror("Failed to redirect stdout of sender");
+    }
+    else if((close(fd[0]) == -1) || (close(fd[1]) == -1))
+    {
+      perror("Failed to close extra pipe descriptors on Sender");
+    }
+    else
+    {
+    }
+    return 1;
+  }
+  if(dup2(fd[0],STDIN_FILENO)== -1)
+    {
+      perror("Failed to redirect stdin of receiver");
+    }
+    else if((close(fd[0]) == -1) || (close(fd[1]) == -1))
+    {
+      perror("Failed to close extra pipe descriptors on receiver");
+    }
+    else
+    {
+    }
+    return 1;
+}
