@@ -46,7 +46,7 @@ void Transmission_Controller(struct Register RxBuffer_st,struct Datablock** Head
   }
   
 }
-
+/*
 int PipelineSender(void)
 {
   pid_t childpid;
@@ -84,3 +84,4 @@ int PipelineSender(void)
     }
     return 1;
 }
+*/
