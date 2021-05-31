@@ -12,8 +12,8 @@ using namespace std;
 
 #define BUFFER_SIZE 10
 
-extern int buffer_input1[BUFFER_SIZE];
-extern int buffer_output1[BUFFER_SIZE];
+static int buffer_input1[BUFFER_SIZE];
+static int buffer_output1[BUFFER_SIZE];
 
 enum BMS_Data {BMS_SOC,BMS_Temperature,BMS_Data,TotalNumber};
 enum Transmission {Stop_Tx, Start_Tx};
