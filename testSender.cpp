@@ -59,7 +59,7 @@ TEST_CASE("Test Case 4 :  data tranfer check") {
     close(fd[0]);
   }
   wait(NULL);
-  if(int s=0; s<BUFFER_SIZE; s++){
+  for(int s=0; s<BUFFER_SIZE; s++){
   REQUIRE(buff_input[s] == buff_output[s]);
   }
   
