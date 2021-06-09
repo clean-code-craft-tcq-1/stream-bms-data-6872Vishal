@@ -33,7 +33,7 @@ We will instruct you to handover your Sender to another participant and take ove
 - Develop the Receiver for the Sender you took over:
 The Sender you have developed will be used by someone else
 to interface with their Receiver.
-Similarly, you will receive someone else's Sender to develop the Receiver.
+Similarly, you will receive someone else's Sender to develop the Receiver.   
 
 ## The Interface
 
