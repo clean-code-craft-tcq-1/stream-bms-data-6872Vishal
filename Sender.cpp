@@ -46,3 +46,12 @@ void Transmission_Controller(struct Register RxBuffer_st,struct Datablock** Head
     buffer_output1[temp] = new_node->BMSDataSample;
   } 
 }
+
+#ifdef MAIN
+int main()
+{
+  struct Register sender_buffer_st = {Start_Tx, 100,BMS_SOC , BUFFER_SIZE};
+  struct Datablock* firstblock = NULL;
+  Transmission_Controller(sender_buffer_st, &firstblock);
+}
+#endif 
